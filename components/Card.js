@@ -1,17 +1,30 @@
 import React from "react"
 
-export default function Card() {
+export default function Card(props) {
     return (
     <div className="card">
-        <img src="../images/katiezaferes.png" className= "card--image" />
+        <img src= {`../images/${props.img}`} className= "card--image" />
         <div className="card--stats">
             <img src="../images.star.png" />
-            <span>5.0</span>
-            <span className="gray">USA</span>
-            <span className="gray">(6)</span>
+            <span>{props.rating}</span>
+            <span className="gray">({props.reviewCount})</span>
+            <span className="gray">{props.location}</span>
             </div>
-            <p>Life lessons with Katie Zaferes</p>
-            <p><span className="bold">From $136</span></p>
+            <p>{props.title}</p>
+            <p><span className="bold">From ${props.price}</span>/person</p>
             </div>
     )
 }
+
+
+//In line 7, the challenge is to pass only the file extension and 
+//name as strings to my img.prop, instead of the whole path. 
+//Things I cannot do: 
+//1 e.g "../images" = { props.img } > This makes no sense
+
+//2 USING THE ES6 TEMPLATE STRING SYNTAX
+//BACKTICKS AND DOLLAR SIGNS, BAYBAY
+// `../images/${props.img}`
+//We need the backticks to create a String Literal that admits a ${Placeholder} , but we cannot leave it at that because   :
+//we also need to wrap these backticks into curly braces to create an instance of
+//Research INTERPELATION IN JS
